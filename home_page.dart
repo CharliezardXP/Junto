@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:junto/screens/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -175,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                 // Filter panel (shown/hidden)
                 if (showFilters) buildFilterPanel(),
 
-                // Person cards list
+                // s list
                 Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -442,7 +443,21 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(
             children: [
-              CircleAvatar(radius: 75, backgroundImage: AssetImage(image)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ProfileViewPage(profileImages: [image]),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 75,
+                  backgroundImage: AssetImage(image),
+                ),
+              ),
 
               const SizedBox(width: 30),
 
